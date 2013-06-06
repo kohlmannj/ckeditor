@@ -6,8 +6,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 body
 {
 	/* Font */
-	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
-	font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 16px;
 
 	/* Text color */
 	color: #333;
@@ -16,6 +16,8 @@ body
 	background-color: #fff;
 
 	margin: 20px;
+	max-width: 960px;
+	margin: 0 auto;
 }
 
 .cke_editable
@@ -71,6 +73,16 @@ hr
 {
 	border: 0px;
 	border-top: 1px solid #ccc;
+}
+
+img {
+	max-width: 99%;
+	height: auto !important;
+}
+
+img.left, img.right {
+	max-width: 50%;
+	max-height: auto;
 }
 
 img.right {
