@@ -16,7 +16,7 @@ body
 	background-color: #fff;
 
 	margin: 20px;
-	max-width: 960px;
+	max-width: 720px;
 	margin: 0 auto;
 }
 
@@ -76,13 +76,16 @@ hr
 }
 
 img {
-	max-width: 99%;
+	display: inline-block;
+	width: auto !important;
 	height: auto !important;
+	max-width: none;
+	max-height: 480px;
 }
 
 img.left, img.right {
-	max-width: 50%;
-	max-height: auto;
+	max-width: auto;
+	max-height: 240px;
 }
 
 img.right {
@@ -108,4 +111,86 @@ pre
 {
 	white-space: pre-wrap; /* CSS 2.1 */
 	word-wrap: break-word; /* IE7 */
+}
+
+.clear-left {
+	clear: left;
+}
+
+.clear-right {
+	clear: right;
+}
+
+.clear-both {
+	clear: both;
+}
+
+/* Begin Figures */
+
+.figure, .figure-left, .figure-right {
+	background: #000;
+	color: #ccc;
+	text-align: center;
+	padding: 8px;
+}
+
+.figure {
+	clear: both;
+}
+
+.figure-left, .figure-right {
+	width: 45%;
+}
+
+.figure-left {
+	float: left;
+	margin: 0 8px 8px 0;
+}
+
+.figure-right {
+	float: right;
+	margin: 0 0 8px 8px;
+}
+
+.figure-left img, .figure-right img {
+	max-width: 100%;
+	max-height: none;
+}
+
+/* Begin Sidebars */
+
+.sidebar, .sidebar-left, .sidebar-right {
+	background: #ccc;
+	font-size: 0.875em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sidebar {
+	max-width: 65%;
+}
+
+.sidebar-left, .sidebar-right {
+	max-width: 45%;
+}
+
+.sidebar-left {
+	float: left;
+	margin: 0 8px 8px 0;
+}
+
+.sidebar-right {
+	float: right;
+	margin: 0 0 8px 8px;
+}
+
+.sidebar img, .sidebar-left img, .sidebar-right img {
+	max-width: 100%;
+	max-height: none;
+}
+
+.sidebar-heading {
+	display: block;
+	font-weight: bold;
+	font-size: 16px;
 }
