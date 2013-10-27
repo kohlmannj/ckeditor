@@ -28,6 +28,10 @@
 			
 			// Check for the subdirectory:
 			$symphonyDomain = parse_url(URL, PHP_URL_SCHEME) . '://' . parse_url(URL, PHP_URL_HOST);
+            $symphonyPort = parse_url(URL, PHP_URL_PORT);
+            if (! is_null($symphonyPort)) {
+                $symphonyDomain .= ":" . $symphonyPort;
+            }
 			$symphonySubdir = str_replace($symphonyDomain, '', URL);
 			
 			// Get the section:
@@ -45,9 +49,12 @@
 					// Get the field id's:
                     $fields = $section->fetchFields();
                     $fieldIDs = array();
+                    $fieldDestinations = new stdClass();
                     foreach($fields as $field)
                     {
-                        $fieldIDs[] = $field->get('id');
+                        $field_id = $field->get('id');
+                        $fieldIDs[] = $field_id;
+                        $fieldDestinations->$field_id = $field->get('destination');
                     }
 
 					// Add rows:
@@ -58,6 +65,7 @@
 						$name = false;
 						foreach($fieldIDs as $id)
 						{
+                            $destination = $fieldDestinations->$id;
 							$info = $data[$id];
                             if(isset($info['value'])) {
                                 if($name == false) {
@@ -72,9 +80,9 @@
                                     $name = basename($info['file']);
                                 }
 
-                                $value = '<a href="'.$symphonySubdir.'/workspace'.$info['file'].'">';
+                                $value = '<a href="'.$symphonySubdir.$destination.'/'.$info['file'].'">';
 
-                                $value = '<a href="/workspace'.$info['file'].'">';
+                                $value = '<a href="'.$destination.'/'.$info['file'].'">';
                                 $a = explode('.', $info['file']);
                                 $ext = trim(strtolower($a[count($a)-1]));
 
@@ -82,7 +90,7 @@
                                 if($jitEnabled &&
                                    ($ext == 'jpeg' || $ext == 'jpg' || $ext == 'png' || $ext == 'gif'))
                                 {
-                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.str_replace("/workspace", "", $destination).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
                                 } else {
                                     // Show an icon according to it's extension:
                                     $a = explode('.', basename($info['file']));
