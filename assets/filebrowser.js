@@ -50,11 +50,8 @@ function loadRightPanel(url)
 			return false;
 		});
 		// Create new-functionality:
-		$("a.create").click(function(){
-			urlNew = $(this).attr("href");
-			$.get(urlNew, function(data){
-				buildForm(data);
-			});
+		$("a.create").click(function() {
+			window.open($(this).attr("href"));
 			return false;
 		});
 	});

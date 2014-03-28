@@ -104,7 +104,7 @@
                         }
 					}
 
-					$form->appendChild(new XMLElement('a', __('create new'), array('href'=>$symphonySubdir.'/symphony/publish/'.$section->get('handle').'/new/', 'class'=>'create button')));
+					$form->appendChild(new XMLElement('a', __('Create New'), array('href'=>$symphonySubdir.'/symphony/publish/'.$section->get('handle').'/new/', 'class'=>'create button')));
 					$form->appendChild(new XMLElement('h3', $section->get('name')));
 					$form->appendChild($div);
 					$form->appendChild(new XMLElement('div', '', array('id'=>'thumb')));
